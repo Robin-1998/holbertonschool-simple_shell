@@ -70,7 +70,7 @@ char *_getenv(char *name, char **environ)
 int _getpath(char **argument, char **environ)
 {
 	int i = 0;
-	char *token, *PATH = NULL, contenant[1024];
+	char *token, *PATH = NULL, contenant[1024], *copie;
 
 	while (environ[i])
 	{
@@ -83,7 +83,7 @@ int _getpath(char **argument, char **environ)
 	}
 	if (PATH == NULL)
 		return (1);
-	char *copie = _strdup(PATH);
+	copie = _strdup(PATH);
 
 	if (copie == NULL)
 	{

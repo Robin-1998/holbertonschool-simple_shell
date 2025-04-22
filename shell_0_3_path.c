@@ -12,6 +12,7 @@
  */
 int main(int ac, char **av, char **environ)
 {
+	int i;
 	char *line = NULL;
 	size_t n = 0;
 	char **argument;
@@ -37,7 +38,7 @@ int main(int ac, char **av, char **environ)
 
 		_fork_execve_wait(argument, environ);
 
-		for (int i = 0; argument[i]; i++)
+		for (i = 0; argument[i]; i++)
 			free(argument[i]);
 		free(argument);
 	}

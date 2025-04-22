@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * read_line - fonction qui permet de lire une ligne depuis l'entrée standard
+ * _read_line - fonction qui permet de lire une ligne depuis l'entrée standard
  * stdin(qui lit les données entrées par l'utilisateur lors du lancement via
  * terminal). Elle utilise getline pour allouer dynamiquement la
  * mémoire si nécessaire.
@@ -15,7 +15,7 @@
  * '\n' s’il est présent), ou 0 si l’utilisateur fait Ctrl+D
  * (fin de fichier) ou s’il y a une erreur.
  */
-size_t read_line(char **line, size_t *n)
+size_t _read_line(char **line, size_t *n)
 {
 	ssize_t read = getline(line, n, stdin);
 
@@ -32,9 +32,15 @@ size_t read_line(char **line, size_t *n)
 	return (read);
 }
 
-
-/*
-* char **strtok(char *str, char *separator)
+/**
+ * _strtok -fonction qui tokenise une chaîne de caractères en utilisant
+ * un séparateur donné.
+ * @str: La chaîne d'entrée à diviser.
+ * @separator: Le séparateur utilisé pour la division (écrasé ici par " :")
+ * Return: Un tableau de chaînes (tokens) terminé par NULL,
+ * ou NULL en cas d'erreur.
+ */
+char **_strtok(char *str, char *separator)
 {
 	char *copie, *token, **double_tableau;
 	int i = 0, nbre_mot = 0;
@@ -77,4 +83,4 @@ size_t read_line(char **line, size_t *n)
 	free(copie);
 	return (double_tableau);
 }
-*/
+

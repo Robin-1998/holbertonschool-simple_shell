@@ -38,57 +38,7 @@ int _strcmp(char *s1, char *s2, int nbre_lettre)
 }
 
 /**
- * strtok - Découpe une chaîne en sous-chaînes (tokens) en utilisant un
- * séparateur.
- * @str: La chaîne à découper
- * @separator: La chaîne contenant les séparateurs.
- * Return: Un pointeur vers le token trouvé, ou NULL s’il n’y en a plus.
- */
-char **_strtok(char *str, char *separator)
-{
-	char *copie, *token, **double_tableau;
-	int i = 0, nbre_mot = 0;
-	separator = " :";
-	if (!str)
-		return (NULL);
-	copie = _strdup(str);
-	if (!copie)
-		return (NULL);
-	token = strtok(copie, separator);
-	while (token)
-	{
-		nbre_mot++;
-		token = strtok(NULL, separator);
-	}
-	free(copie);
-	double_tableau = malloc(sizeof(char *) * (nbre_mot + 1));
-	if (!double_tableau)
-		return (NULL);
-	copie = _strdup(str);
-	if (!copie)
-		return (NULL);
-	token = strtok(copie, separator);
-	while (token)
-	{
-		double_tableau[i] = _strdup(token);
-		if (!double_tableau[i])
-		{
-			while (i > 0)
-				free(double_tableau[--i]);
-			free(double_tableau);
-			free(copie);
-			return (NULL);
-		}
-		i++;
-		token = strtok(NULL, separator);
-	}
-	double_tableau[i] = NULL;
-	free(copie);
-	return (double_tableau);
-}
-
-/**
- * strdup - Duplique une chaîne de caractères en allouant dynamiquement
+ * _strdup - Duplique une chaîne de caractères en allouant dynamiquement
  * de la mémoire pour y copier la chaîne source.
  * @str: La chaîne de caractères source à dupliquer.
  * Return: Un pointeur vers la nouvelle chaîne dupliquée, ou NULL si
@@ -115,3 +65,4 @@ char *_strdup(char *str)
 	dest[j] = '\0';
 	return (dest);
 }
+

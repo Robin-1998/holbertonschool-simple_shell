@@ -14,14 +14,15 @@
 #include <errno.h>
 
 char *_strdup(char *str);
-char **_strtok(char *str, char *separator);
 int _strcmp(char *s1, char *s2, int nbre_lettre);
 int _strlen(char *str);
 int _getpath(int ac, char **av, char **environ);
 char *_getenv(char *name, char **environ);
-int _print_path(char **environ);
-size_t _read_line(char **line, size_t *n);
-void _fork_execve_wait(char **argument, char **environ);
+/*int print_path(char **environ);*/
+size_t read_line(char **line, size_t *n);
+void fork_execve_wait(char **argument, char **environ);
+extern char **environ;
+
 
 
 #endif /* MAIN_H */

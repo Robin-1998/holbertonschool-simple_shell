@@ -83,16 +83,3 @@ char **_strtok(char *str, char *separator)
 	free(copie);
 	return (double_tableau);
 }
-
-int _exit_prog(char **argument)
-{
-	if (argument == NULL || argument[0] == NULL)
-		return (0);
-
-	if (_strcmp(argument[0], "exit", 4) == 0)
-	{
-		exit(0); /* Quitte le shell immédiatement */
-	}
-
-	return (0); /* Pas la commande "exit" */
-}

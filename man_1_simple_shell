@@ -1,0 +1,8 @@
+.B _simple_shell
+	la fonction _simple_shell permet d'interpréter un argument rencontré
+
+La fonction simple shell permet de Lancer une boucle interactive qui lit
+les commandes utilisateur, résout le chemin des exécutables via PATH et
+exécute la commande avec `fork`, `execve`, et `wait`.
+.RE
+à l'aide des fonctions : - 

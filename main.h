@@ -24,7 +24,9 @@ extern char **environ;
 char **_strtok(char *str, char *separator);
 int fichier_stat(char *ptr);
 int _getpath(char **argument, char **environ);
-
+int _exit_prog(char **argument);
+char *_strchr(char *s, char c);
+int _verif_path(char *token, char **argument, char *contenant);
 
 #endif /* MAIN_H */
 

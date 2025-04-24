@@ -17,10 +17,6 @@ void _fork_execve_wait(char **argument, char **environ)
 	}
 	if (pid == 0)/*execve remplace le process actuel par la commande demandée*/
 	{ /*on gère aussi le cas d'erreur si ça ne fonctionne pas et on quitte*/
-		if (_strcmp(argument[0], "exit", 4) == 0)
-		{
-			exit(0);
-		}
 		if (execve(argument[0], argument, environ) == -1)
 		{
 			perror("Erreur dans l'exécution");

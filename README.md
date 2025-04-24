@@ -13,11 +13,11 @@ flowchart TD
     A[Start] --> B(Affiche le prompt $)
     B --> C(lit la ligne de l'utilisateur)
     C --> D(analyse la ligne)
-    D --> E{commande interne commande externe }
+    D --> E{interne / externe ?}
     E --> | Interne | F(executer la commande)
     E --> | Externe | G(Fork - execve)
     G --> H(wait processus fils)
-    H --> I(free avant de reprendre la boucle)
+    H --> I(free avant de <br> reprendre la boucle)
     I --> B
     F --> I
 
@@ -56,7 +56,7 @@ $ /bin/ls
 
 Sortie en STDOUT :
 ```bash
-
+analyse.c  executer.c  hsh  main.c  main.h  utils.c
 ```
 
 ## 📚 Man Page 📚

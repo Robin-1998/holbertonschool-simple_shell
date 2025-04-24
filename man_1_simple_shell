@@ -1,39 +1,60 @@
-NAME
-	_simple_shell
-
-SYNOPSIS
+.TH Simple_Shell "avril 2025" "Manuel d'utilisateur"
+.RE
+.SH NAME
+.RE
+.B _simple_shell
+.RE
+.SH SYNOPSIS
 	./hsh
 
-DESCRIPTION
+.SH DESCRIPTION
+.RE
+.RE
 hsh permet de Lancer une boucle interactive qui lit les commandes utilisateur (comme un shell), résout le chemin des exécutables via la variable d'environnement PATH et
 exécute les commande avec `fork`, `execve`, et `wait`. Il fonctionne en mode interactif (avec prompt) ou non-interactif (lecture de script).
+
 .RE
-à l'aide de différentes fonctions :
+.B à l'aide de différentes fonctions :
+
 .RE
-en partie analyse
+EN ANALYSE :
+.RE
 - _read_line : va lire ce que l'on entre dans le terminal
+
+.RE
 - _strtok : fonction permet de tokeniser une chaîne de caractères et de retourner tous les tokens dans un double pointeur (char **)
 .RE
-en partie exécutable
+EN EXECUTABLE :
+.RE
 - _fork_execve_wait permet d’exécuter une commande comme le ferait notre Bash. Elle isole le programme dans un processus fils, exécute la commande, et attend que ce soit terminé.
-- _getenv : cette fonction cherche une variable d’environnement sans utiliser la commande getenv
+
+.RE
 - _getpath : cette fonction transforme une commande (de type ls) en un chemin absolu (comme bin/ls) en utilisant la variable PATH
 .Re
 donc en résumé notre fonction principal va:
+
+.RE
 1) Affiche un prompt ($) si le shell est interactif
+.RE
 2) Lit une ligne tapée par l’utilisateur
+.RE
 3) Découpe la ligne en morceaux (_strtok) pour extraire la commande + ses arguments
+.RE
 4) Cherche dans PATH pour retrouver le chemin absolu de la commande (_getpath)
+.RE
 5) Exécute la commande avec un fork() + execve() + wait() (_fork_execve_wait)
+.RE
 6) Libère la mémoire allouée
 
 
 Exemple :
+
 $ ls
-affiche le contenu du dossier en cours
-
+Affiche le contenu du dossier courant
+.RE
 $ /bin/ls
-
-
-AUTEUR :
+affiche le contenu du dossier courant via le chemin absolu
+.RE
+.RE
+.SH DATE ET AUTEUR :
 	Rédigé par DAVID Robin et LEFOULON Thérèse-Marie

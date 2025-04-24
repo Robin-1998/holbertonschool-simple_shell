@@ -21,7 +21,7 @@ char *_getenv(char *name, char **environ);
 size_t _read_line(char **line, size_t *n);
 void _fork_execve_wait(char **argument, char **environ);
 extern char **environ;
-char **_strtok(char *str, char *separator);
+char **_token_doubletableau(char *str, char *separator);
 int fichier_stat(char *ptr);
 int _getpath(char **argument, char **environ);
 

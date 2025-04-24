@@ -34,13 +34,14 @@ size_t _read_line(char **line, size_t *n)
 
 /**
  * _strtok -fonction qui tokenise une chaîne de caractères en utilisant
- * un séparateur donné.
+ * un séparateur donné. (reproduit la commande strtok mais prend en compte
+ * le cas d'un double pointeur)
  * @str: La chaîne d'entrée à diviser.
  * @separator: Le séparateur utilisé pour la division (écrasé ici par " :")
  * Return: Un tableau de chaînes (tokens) terminé par NULL,
  * ou NULL en cas d'erreur.
  */
-char **_strtok(char *str, char *separator)
+char **_token_doubletableau(char *str, char *separator)
 {
 	char *copie, *token, **double_tableau;
 	int i = 0, nbre_mot = 0;

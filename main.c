@@ -30,7 +30,7 @@ int main(int ac, char **av, char **environ)
 			break;
 		}
 
-		argument = _strtok(line, separator);
+		argument = _token_doubletableau(line, separator);
 		if (argument == NULL)
 			return (1);
 

@@ -20,7 +20,7 @@ void _fork_execve_wait(char **argument, char **environ)
 		if (execve(argument[0], argument, environ) == -1)
 		{
 			perror("Erreur dans l'exécution");
-			exit(1);
+			exit(127);
 		}
 	}
 	else /*on bloque le processus parent tant que l'enfant n'a pas terminé*/
@@ -51,8 +51,7 @@ int _getpath(char **argument, char **environ)
 	}
 	if (PATH == NULL)/*Si on trouve pas PATH, on arrête tout*/
 		return (1);
-	copie = _strdup(PATH);/*On duplique la variable PATH pour pouvoir*/
-/*la découper sans modifier l'originale*/
+	copie = _strdup(PATH);/*duplique la variable PATH pour pas tuer l'original*/
 	if (copie == NULL)
 	{
 		perror("strdup"); /*si la duplication échoue*/
@@ -72,6 +71,7 @@ int _getpath(char **argument, char **environ)
 				free(copie);
 				return (1);
 			}
+			break;
 		} /*Sinon on teste le dossier suivant dans PATH*/
 			token = strtok(NULL, ":");
 	}

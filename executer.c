@@ -29,37 +29,6 @@ void _fork_execve_wait(char **argument, char **environ)
 }
 
 /**
- * _getenv - fonction qui permet de récupérer une variable d'environnement
- * @name: pointeur vers une chaîne contenant le nom de la variable à chercher
- * @environ: Double pointeur vers le tableau des variables d'environnement.
- * Return: Un pointeur vers la valeur de la variable
- * d’environnement si trouvée.
- * NULL si le nom est NULL, si environ est NULL, ou si
- * la variable n’existe pas.
- */
-
-char *_getenv(char *name, char **environ)
-{
-	int i = 0;
-	int longueur;
-
-	if (name == NULL || environ == NULL)
-		return (NULL);
-
-	longueur = _strlen(name);
-
-	while (environ[i])
-	{
-		if (_strcmp(environ[i], name, longueur) == 0 &&
-			environ[i][longueur] == '=')
-		{
-			return (environ[i] + longueur + 1);
-		}
-		i++;
-	}
-	return (NULL);
-}
-/**
  * _getpath - Recherche dans les variables d’environnement la commande à
  * exécuter, et remplace `argument[0]` par le chemin absolu si elle est
  * trouvée dans l’un des répertoires du PATH.
@@ -94,7 +63,7 @@ int _getpath(char **argument, char **environ)
 	while (token)
 	{
 		sprintf(contenant, "%s/%s", token, *argument);
-		if (fichier_stat(contenant))
+		if (access(contenant, X_OK) == 0)
 		{
 			free(*argument);
 			*argument = _strdup(contenant);
@@ -111,17 +80,3 @@ int _getpath(char **argument, char **environ)
 	return (0);
 }
 
-/**
- * fichier_stat - fonction qui vérifie si un fichier ou un répertoire existe
- * à l'aide de stat
- * @ptr: Pointeur vers une chaîne de caractères contenant le
- * chemin du fichier à vérifier.
- * Return: - 1 si le fichier ou répertoire existe ou
- * 0 s'il n'existe pas ou en cas d'erreur.
- */
-int fichier_stat(char *ptr)
-{
-	struct stat st;
-
-	return (stat(ptr, &st) == 0);
-}

@@ -75,24 +75,24 @@ char *_strdup(char *str)
  * la variable n’existe pas.
  */
 
- char *_getenv(char *name, char **environ)
- {
-	 int i = 0;
-	 int longueur;
+char *_getenv(char *name, char **environ)
+{
+	int i = 0;
+	int longueur;
 
-	 if (name == NULL || environ == NULL)
-		 return (NULL);
+	if (name == NULL || environ == NULL)
+		return (NULL);
 
-	 longueur = _strlen(name);
+	longueur = _strlen(name);
 
-	 while (environ[i])
-	 {
-		 if (_strcmp(environ[i], name, longueur) == 0 &&
-			 environ[i][longueur] == '=')
-		 {
-			 return (environ[i] + longueur + 1);
-		 }
-		 i++;
-	 }
-	 return (NULL);
- }
+	while (environ[i])
+	{
+		if (_strcmp(environ[i], name, longueur) == 0 &&
+			environ[i][longueur] == '=')
+		{
+			return (environ[i] + longueur + 1);
+		}
+		i++;
+	}
+	return (NULL);
+}

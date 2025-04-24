@@ -19,29 +19,26 @@ int main(int ac, char **av, char **environ)
 	char *separator = " ";
 	(void)ac;
 	(void)av;
-
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-			printf("$ ");
-
+			printf("$ "); /* Affiche l'invite si mode interactif */
 		if (_read_line(&line, &n) == 0)
 		{
-			break;
+			break; /* Quitte la boucle si l'utilisateur fait CTRL+D */
 		}
-
+/* Découpe la ligne en tokens et les stocke dans un tableau */
 		argument = _token_doubletableau(line, separator);
 		if (argument == NULL)
-			return (1);
-
+			return (1); /* Quitte si erreur d'allocation mémoire */
+/* Trouve le chemin complet de la commande */
 		_getpath(argument, environ);
-
+	/* Crée un processus pour exécuter la commande */
 		_fork_execve_wait(argument, environ);
-
 		for (i = 0; argument[i]; i++)
-			free(argument[i]);
-		free(argument);
+			free(argument[i]); /* Libère chaque chaîne du tableau */
+		free(argument);  /* Libère le tableau */
 	}
-	free(line);
-	return (0);
+	free(line); /* Libère la ligne saisie à la fin du programme */
+	return (0); /* Fin normale du programme */
 }

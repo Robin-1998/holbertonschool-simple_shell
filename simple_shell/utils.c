@@ -65,5 +65,3 @@ char *_strdup(char *str)
 	dest[j] = '\0';
 	return (dest);
 }
-
-

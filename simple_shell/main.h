@@ -16,16 +16,14 @@
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2, int nbre_lettre);
 int _strlen(char *str);
+char *_strchr(char *s, char c);
 char *_getenv(char *name, char **environ);
-/*int print_path(char **environ);*/
 size_t _read_line(char **line, size_t *n);
 void _fork_execve_wait(char **argument, char **environ);
 extern char **environ;
-char **_strtok(char *str, char *separator);
+char **_token_doubletableau(char *str, char *separator);
 int fichier_stat(char *ptr);
 int _getpath(char **argument, char **environ);
 
 
 #endif /* MAIN_H */
-
-

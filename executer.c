@@ -77,4 +77,3 @@ int _getpath(char **argument, char **environ)
 	free(copie);
 	return (0);
 }
-

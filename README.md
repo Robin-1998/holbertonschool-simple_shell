@@ -9,7 +9,8 @@ Le shell fonctionne en mode interactif (avec un prompt) et non-interactif (lectu
 ---
 ## 📊 Flowchart 📊
 ```mermaid
-flowchart TD
+graph TD;
+
     A[Start] --> B(Affiche le prompt $)
     B --> C(lit la ligne de l'utilisateur)
     C --> D(analyse la ligne)
@@ -20,6 +21,7 @@ flowchart TD
     H --> I(free avant de <br> reprendre la boucle)
     I --> B
     F --> I
+```
 
 ---
 

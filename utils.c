@@ -65,34 +65,3 @@ char *_strdup(char *str)
 	dest[j] = '\0';
 	return (dest);
 }
-/**
- * _getenv - fonction qui permet de récupérer une variable d'environnement
- * @name: pointeur vers une chaîne contenant le nom de la variable à chercher
- * @environ: Double pointeur vers le tableau des variables d'environnement.
- * Return: Un pointeur vers la valeur de la variable
- * d’environnement si trouvée.
- * NULL si le nom est NULL, si environ est NULL, ou si
- * la variable n’existe pas.
- */
-
-char *_getenv(char *name, char **environ)
-{
-	int i = 0;
-	int longueur;
-
-	if (name == NULL || environ == NULL)
-		return (NULL);
-
-	longueur = _strlen(name);
-
-	while (environ[i])
-	{
-		if (_strcmp(environ[i], name, longueur) == 0 &&
-			environ[i][longueur] == '=')
-		{
-			return (environ[i] + longueur + 1);
-		}
-		i++;
-	}
-	return (NULL);
-}

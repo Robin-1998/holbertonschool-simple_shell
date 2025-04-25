@@ -17,7 +17,6 @@ char *_strdup(char *str);
 int _strcmp(char *s1, char *s2, int nbre_lettre);
 int _strlen(char *str);
 char *_strchr(char *s, char c);
-char *_getenv(char *name, char **environ);
 size_t _read_line(char **line, size_t *n);
 void _fork_execve_wait(char **argument, char **environ);
 extern char **environ;
